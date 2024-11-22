@@ -24,6 +24,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Configuration
 @RequiredArgsConstructor
@@ -108,7 +110,13 @@ public class CargaConfiguration {
 
             if (arquivos != null) {
                 for (File arquivo : arquivos) {
-                    File arquivoDestino = new File(pastaDestino, arquivo.getName());
+
+                    // Obtemos a data e hora atual
+                    String dataHora = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                    // Criamos um novo nome de arquivo com a data e hora
+                    String novoNome = String.format("%s_%s", dataHora, arquivo.getName());
+
+                    File arquivoDestino = new File(pastaDestino, novoNome);
                     if (arquivo.renameTo(arquivoDestino)) {
                         log.info("Arquivo movido: {}", arquivo.getName());
                     } else {
