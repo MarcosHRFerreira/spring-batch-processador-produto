@@ -44,17 +44,4 @@ public class CargaController {
 	}
 
 
-//	@GetMapping("/execute")
-//    public void importaArquivo() {
-//    	try {
-//    		JobParameters jobParameters = new JobParameters();
-//    		jobLauncher.run(job, jobParameters);
-//
-//		} catch (Exception e) {
-//			log.error(e.getMessage(), e);
-//			throw new RuntimeException(e);//NOSONAR
-//		}
-//
-//    }
-
 }
